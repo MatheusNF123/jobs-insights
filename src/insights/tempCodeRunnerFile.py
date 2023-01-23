@@ -1,13 +1,11 @@
-import jobs
-from typing import List, Dict
+from typing import Union, List, Dict
+import src.insights.jobs as jobs
 
-
-def get_unique_industries(path: str) -> List[str]:
+def get_max_salary(path: str) -> int:
     list_jobs = jobs.read(path)
-    industry = [item['industry'] for item in list_jobs]
-    # return list(set(industry))
-    print(list(set(industry)))
-    """Checks all different industries and returns a list of them
+    salary = [item['max_salary'] for item in list_jobs if item['max_salary']]
+    print(salary)
+    """Get the maximum salary of all jobs
 
     Must call `read`
 
@@ -18,9 +16,9 @@ def get_unique_industries(path: str) -> List[str]:
 
     Returns
     -------
-    list
-        List of unique industries
+    int
+        The maximum salary paid out of all job opportunities
     """
-    # raise NotImplementedError
+    raise NotImplementedError
 
-get_unique_industries('data/jobs.csv')
+get_max_salary('data/jobs.csv')
