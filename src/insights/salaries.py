@@ -2,8 +2,6 @@ from typing import Union, List, Dict
 
 import src.insights.jobs as jobs
 
-# import jobs
-
 
 def get_max_salary(path: str) -> int:
     list_jobs = jobs.read(path)
@@ -14,7 +12,6 @@ def get_max_salary(path: str) -> int:
     ]
 
     return max(salary)
-    # raise NotImplementedError
 
 
 def get_min_salary(path: str) -> int:
@@ -29,7 +26,6 @@ def get_min_salary(path: str) -> int:
 
 
 def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
-    # try:
     try:
         max_salary = int(job["max_salary"])
         min_salary = int(job["min_salary"])
@@ -39,8 +35,6 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
 
     if min_salary > max_salary:
         raise ValueError
-    elif job.get("max_salary") is None and job.get("min_salary") is None:
-        raise ValueError
     else:
         return min_salary <= int_salary <= max_salary
 
@@ -49,10 +43,6 @@ def filter_by_salary_range(
     jobs: List[dict], salary: Union[str, int]
 ) -> List[Dict]:
     arr = []
-    # try:
-    #     int_salary = int(salary)
-    # except Exception:
-    #     raise ValueError
 
     for i in jobs:
         try:
